@@ -6,6 +6,7 @@ var ctx = canvas.getContext('2d');
 var width = $("#canvas").width();
 var height = $("#canvas").height();
 
+//-----------------------------'class'-------------------------------
 function Mover(x, y) {
   this.location = new PVector(x, y);
   this.velocity = new PVector(0, 0);
@@ -61,6 +62,8 @@ Mover.prototype = {
   }
 };
 
+//----------------------------------
+
 var Me = function (x, y) {
 
   this.run = function () {
@@ -113,8 +116,10 @@ var Me = function (x, y) {
 
 Me.prototype = new Mover();
 
+//----------------------------------
+
 var Boid = function (x, y) {
-  this.velocity = new PVector(Math.random() * 2 - 1, Math.random() * 2 - 1);
+  this.velocity = new PVector(Math.random() * 4 - 2, Math.random() * 4 - 2);
 
   this.run = function (boids) {
     this.flock(boids);
@@ -176,12 +181,18 @@ var Boid = function (x, y) {
     var steer = new PVector(0, 0);
     var count = 0;
     // For every boid in the system, check if it's too close
+
+    //!!!
+    var that = this;
+
     boids.forEach(function (other) {
-      var d = PVector.dist(this.location, other.location);
+      var d = PVector.dist(that.location, other.location);
+      console.log(d);
       // If the distance is greater than 0 and less than an arbitrary amount (0 when you are yourself)
+      //console.log(that.location, other.location);
       if ((d > 0) && (d < desiredseparation)) {
         // Calculate vector pointing away from neighbor
-        var diff = PVector.sub(this.location, other.location);
+        var diff = PVector.sub(that.location, other.location);
         diff.normalize();
         diff.div(d); // Weight by distance
         steer.add(diff);
@@ -201,7 +212,6 @@ var Boid = function (x, y) {
       steer.sub(this.velocity);
       steer.limit(this.maxforce);
     }
-    console.log(steer);
     return steer;
   };
 
@@ -211,8 +221,12 @@ var Boid = function (x, y) {
     var neighbordist = 50;
     var sum = new PVector(0, 0);
     var count = 0;
+
+    //!!!
+    var that = this;
+
     boids.forEach(function (other) {
-      var d = PVector.dist(this.location, other.location);
+      var d = PVector.dist(that.location, other.location);
       if ((d > 0) && (d < neighbordist)) {
         sum.add(other.velocity);
         count++;
@@ -236,8 +250,12 @@ var Boid = function (x, y) {
     var neighbordist = 50;
     var sum = new PVector(0, 0); // Start with empty vector to accumulate all locations
     var count = 0;
+
+    //!!!
+    var that = this;
+
     boids.forEach(function (other) {
-      var d = PVector.dist(this.location, other.location);
+      var d = PVector.dist(that.location, other.location);
       if ((d > 0) && (d < neighbordist)) {
         sum.add(other.location); // Add location
         count++;
@@ -245,7 +263,7 @@ var Boid = function (x, y) {
     });
     if (count > 0) {
       sum.div(count);
-      return seek(sum); // Steer towards the location
+      return this.seek(sum); // Steer towards the location
     } else {
       return new PVector(0, 0);
     }
@@ -307,4 +325,4 @@ draw(function () {
     b.run(boids);
   });
   //console.log(me.velocity);
-}, 30);
+}, 24);
