@@ -30,6 +30,7 @@
     }
   </style>
   <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/vue/0.10.4/vue.min.js"></script>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 </head>
 <body>
   <img id="bgcolor" src="color_graph.jpg">
@@ -42,17 +43,21 @@
     </div>
   </div>
   <div id="result">
-    <svg width="550" height="100" viewPort="0 0 1500 100" version="1.1"xmlns="http://www.w3.org/2000/svg" v-repeat="colors">
-      <rect width="100" height="100"></rect>
-    </svg>
+    <!--<svg id="colorPreview" width="550" height="100" viewPort="0 0 550 100" version="1.1"xmlns="http://www.w3.org/2000/svg">
+    </svg>-->
   </div>
 </body>
+<script type="text/javascript">
+for(var i=0;i<5;i++){
+ //$("#colorPreview").append('<rect id="rec'+i+'"'+ 'x="'+ i*110 +'px"'+'y="100px" width="100" height="100" fill="black"></rect>');
+}
+</script>
 <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.2/raphael-min.js"></script>
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="utils.js"></script>
 <script src="pvector.js"></script>
 <script src="boid.js"></script>
 <script src="flock.js"></script>
 <script src="paper.js"></script>
 <script type="text/javascript" src="binding.js"></script>
+<script type="text/javascript" src="colorPreview.js"></script>
 </html>

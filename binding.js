@@ -15,27 +15,3 @@ var gui = new Vue({
 				stats: stats
 		}
 });
-
-var colors = [{
-		number: 0,
-		color: flock.boids[0].color
-}, {
-		number: 1,
-		color: flock.boids[1].color
-}, {
-		number: 2,
-		color: flock.boids[2].color
-}, {
-		number: 3,
-		color: flock.boids[3].color
-}, {
-		number: 4,
-		color: flock.boids[4].color
-}];
-
-var result = new Vue({
-		el: '#result',
-		data: {
-				colors: colors
-		}
-});
