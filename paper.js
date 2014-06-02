@@ -14,7 +14,7 @@
 
   exports.flock = null;
 
-  utils.draw(24, function () {
+  utils.draw(20, function () {
     if (!exports.stop && exports.flock) {
       exports.flock.run();
       exports.sepWeight = stats[0].value;
