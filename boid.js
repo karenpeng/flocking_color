@@ -39,6 +39,11 @@
     hue = utils.constrain(hue, 0, 1);
     saturation = utils.constrain(saturation, 0, 1);
     this.color = Raphael.hsb2rgb(hue, saturation, 1).hex;
+    this.rColor = Math.round(Raphael.hsb2rgb(hue, saturation, 1).r);
+    this.gColor = Math.round(Raphael.hsb2rgb(hue, saturation, 1).g);
+    this.bColor = Math.round(Raphael.hsb2rgb(hue, saturation, 1).b);
+    this.hue = hue;
+    this.saturation = saturation;
 
     //console.log(color);
     this.line.attr({

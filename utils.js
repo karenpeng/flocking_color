@@ -9,19 +9,13 @@
    * @param {[type]} background [description]
    * @return {[type]} [description]
    */
-  utils.setup = function (width, height, background) {
-    width = width || 400;
-    height = height || 400;
+  utils.setup = function (width, height, background, id1, id2) {
+    width = width;
+    height = height;
     background = background || '#eee';
-    var container = $('#paper');
-    container.width(width)
-      .height(height)
-    //.css('background-color', background)
-    .css('position', 'absolute')
-      .css('left', '50%')
-      .css('margin-left', '-200px')
-      .css('top', '20px');
-    var paper = new Raphael('paper', width, height);
+    var container = $(id1);
+    container.width(width).height(height);
+    var paper = new Raphael(id2, width, height);
     return paper;
   };
 

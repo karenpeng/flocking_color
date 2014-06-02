@@ -1,12 +1,12 @@
 var stats = [{
 		label: 'seperation',
-		value: 1.5
+		value: 2
 }, {
 		label: 'aligment',
-		value: 1
+		value: 0.6
 }, {
 		label: 'cohesion',
-		value: 1
+		value: 0.4
 }];
 
 var gui = new Vue({
