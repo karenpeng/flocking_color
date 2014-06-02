@@ -7,12 +7,11 @@
     this.boids.push(b);
   };
 
-  Flock.prototype.run =function () {
+  Flock.prototype.run = function () {
     var self = this;
     this.boids.forEach(function (b) {
       b.run(self.boids);
     });
   };
-
   exports.Flock = Flock;
 })(this);

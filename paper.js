@@ -1,4 +1,4 @@
-/* global utils,PVector,Path,Flock,Boid */
+/* global utils,PVector,Path,Flock,Boid,ColorBlock */
 (function (exports) {
   var paper = utils.setup(400, 400, '#000', '#paper', 'paper');
   var width = paper.width;
@@ -42,10 +42,6 @@
     click = false;
   };
 
-  paper.canvas.onmousemove = function (e) {
-    //click && flock.add(new Boid(e.layerX, e.layerY, 3, 0.2, paper));
-  };
-
   var preview = utils.setup(550, 100, "#000", "#result", "result");
   var colorBlocks = [];
   for (var j = 0; j < 5; j++) {
@@ -58,17 +54,16 @@
       var name = arr.join('');
       $(name).html(
         '<div class="hex">' + 'HEX ' + colorBlocks[k].color + '<div/>' +
-        '<div class="rgb">' + 'RGB ' + colorBlocks[k].rColor + ' ' +
-        colorBlocks[
-          k].gColor + ' ' +
+        '<div class="rgb">' + 'RGB ' +
+        colorBlocks[k].rColor + ' ' +
+        colorBlocks[k].gColor + ' ' +
         colorBlocks[k].bColor + '<div/>' +
-        '<div class="hsb">' + 'HSB ' + colorBlocks[k].hue + ' ' +
-        colorBlocks[
-          k].saturation + ' ' +
+        '<div class="hsb">' + 'HSB ' +
+        colorBlocks[k].hue + ' ' +
+        colorBlocks[k].saturation + ' ' +
         colorBlocks[k].brightness + '<div/>'
       );
     }
   });
 
-  exports.colorBlocks = colorBlocks;
 })(this);
